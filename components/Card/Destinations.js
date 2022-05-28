@@ -10,34 +10,37 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-export default function Card() {
+export default function Destinations() {
   return (
     <Center py={6}>
       <Box
-        maxW={"445px"}
+        maxW={"380px"}
         w={"full"}
         bg={useColorModeValue("white", "gray.900")}
         boxShadow={"2xl"}
         rounded={"md"}
-        p={6}
+        // p={6}
         overflow={"hidden"}
       >
-        <Box
-          h={"210px"}
-          bg={"gray.100"}
-          mt={-6}
-          mx={-6}
-          mb={6}
-          pos={"relative"}
-        >
-          <Image
-            src={
-              "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
-            }
-            layout={"fill"}
-          />
-        </Box>
         <Stack>
+          <Box
+            h={"280px"}
+            bg={"gray.100"}
+            mt={-6}
+            mx={-6}
+            // mb={-6}
+            pos={"relative"}
+          >
+            <Image
+              src={
+                "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
+              }
+              layout={"fill"}
+            />
+          </Box>
+          <Text>Nepal</Text>
+        </Stack>
+        {/* <Stack>
           <Text
             color={"green.500"}
             textTransform={"uppercase"}
@@ -63,7 +66,7 @@ export default function Card() {
             magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
             justo duo dolores et ea rebum.
           </Text>
-        </Stack>
+        </Stack> */}
         {/* <Stack mt={6} direction={"row"} spacing={4} align={"center"}>
           <Avatar
             src={"https://avatars0.githubusercontent.com/u/1164541?v=4"}
