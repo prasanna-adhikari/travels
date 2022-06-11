@@ -14,3 +14,6 @@ a {
 * {
   box-sizing: border-box;
 }
+.contact{
+  font-size: "15px" !important;
+}

@@ -89,7 +89,6 @@ export default function Home() {
     //   </footer>
     // </div>
     <div>
-      <Header />
       {/* <ScaleFade initialScale={0.2} in={true} unmountOnExit={true}> */}
       <Container maxW={"7xl"} py={5}>
         <Stack
@@ -253,7 +252,7 @@ export default function Home() {
           templateColumns={{ sm: "1fr ", md: "2fr 2fr", lg: "2fr 2fr 2fr" }}
           spacing={12}
           py={10}
-          pb={20}
+          pb={5}
         >
           <Destinations />
           <Destinations />
@@ -267,18 +266,6 @@ export default function Home() {
         <Container maxW={"7xl"} py={28}>
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
             <Stack spacing={4}>
-              {/* <Text
-              textTransform={"uppercase"}
-              color={"blue.400"}
-              fontWeight={600}
-              fontSize={"sm"}
-              bg={useColorModeValue("blue.50", "blue.900")}
-              p={2}
-              alignSelf={"flex-start"}
-              rounded={"md"}
-            >
-              Our Story
-            </Text> */}
               <Heading color={"white"}>Subscribe to Our NewsLetter</Heading>
               <Text color={"white"} fontSize={"lg"}>
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
@@ -347,14 +334,13 @@ export default function Home() {
           templateColumns={{ sm: "1fr ", md: "2fr 2fr", lg: "2fr 2fr 2fr" }}
           spacing={12}
           py={10}
-          pb={20}
+          pb={5}
         >
           <Card />
           <Card />
           <Card />
         </SimpleGrid>
       </Container>
-      <Footer />
     </div>
   );
 }
