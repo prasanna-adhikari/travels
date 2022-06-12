@@ -23,7 +23,7 @@ export default function ViewByCountry() {
     <Container maxW={"7xl"} py={5}>
       <Center>
         <InputGroup>
-          <Input type="tel" placeholder="Search Country" />
+          <Input type="text" placeholder="Search Country" />
           <InputRightAddon
             children={<FaSearch />}
             style={{ cursor: "pointer" }}

@@ -17,7 +17,19 @@ import {
   Container,
   Spacer,
   Tooltip,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  FormControl,
+  Input,
+  PopoverArrow,
+  PopoverBody,
 } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import {
   HamburgerIcon,
   CloseIcon,
@@ -27,10 +39,18 @@ import {
 
 import NextLink from "next/link";
 import { FaSearch } from "react-icons/fa";
-
+import SearchModal from "../SearchModal/SearchModal";
+import React from "react";
 export default function Header() {
   const { isOpen, onToggle } = useDisclosure();
-
+  const {
+    isOpen: isOpenModal,
+    onOpen: onOpen,
+    onClose: onClose,
+  } = useDisclosure();
+  const initialFocusRef = React.useRef();
+  // const [isOpenModal, setIsOpenModal] = useState(false);
+  useEffect(() => {}, []);
   return (
     <Box
       borderBottom={1}
@@ -51,7 +71,7 @@ export default function Header() {
       >
         <Flex maxW={"7xl"} w={"100%"}>
           <Flex
-            flex={{ base: 1, md: "auto" }}
+            flex={{ base: 0.1, md: "auto" }}
             ml={{ base: -2 }}
             display={{ base: "flex", md: "none" }}
           >
@@ -68,9 +88,16 @@ export default function Header() {
               aria-label={"Toggle Navigation"}
             />
           </Flex>
-          <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+          <Flex
+            flex={{ base: 1 }}
+            justify={{ base: "center", md: "start", sm: "center" }}
+            align={"center"}
+          >
             <Text
-              textAlign={useBreakpointValue({ base: "center", md: "left" })}
+              textAlign={useBreakpointValue({
+                base: "center",
+                md: "start",
+              })}
               fontFamily={"heading"}
               color={useColorModeValue("gray.800", "white")}
             >
@@ -81,10 +108,24 @@ export default function Header() {
             <DesktopNav />
           </Flex>
           <Flex align={"center"} justify={"center"} ml={5}>
-            <FaSearch w={6} h={6} style={{ cursor: "pointer" }} />
+            <FaSearch
+              w={6}
+              h={6}
+              style={{ cursor: "pointer" }}
+              onClick={onOpen}
+            />
           </Flex>
         </Flex>
-
+        <SearchModal open={isOpenModal} close={onClose} />
+        {/* <Modal isOpen={isOpenModal} onClose={onClose}>
+          <ModalOverlay closeOnOverlayClick={true} />
+          <FormControl>
+            <Input placeholder="Search Place Here" />
+          </FormControl>
+          
+        </Modal> */}
+        {/* {isOpenModal && <SearchModal open={isOpenModal} />} */}
+        {/* <SearchModal open={isOpenModal} /> */}
         {/* <Stack
           flex={{ base: 1, md: 0 }}
           justify={"flex-end"}
