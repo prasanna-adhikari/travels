@@ -254,11 +254,7 @@ export default function Home() {
           py={10}
           pb={5}
         >
-          <Destinations />
-          <Destinations />
-          <Destinations />
-          <Destinations />
-          <Destinations />
+          <Destinations length="6" />
           <Destinations />
         </SimpleGrid>
       </Container>

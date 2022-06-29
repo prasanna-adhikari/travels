@@ -63,6 +63,9 @@ export default function Header() {
       justifyContent={"center"}
       alignItems={"center"}
       w={"100%"}
+      zIndex="1111"
+      boxShadow="base"
+      // position="fixed"
     >
       <Flex
         align={"center"}
@@ -346,7 +349,7 @@ const NAV_ITEMS = [
     // ],
   },
   {
-    label: "View By Country",
+    label: "Countries",
     href: "/view-by-country",
     // children: [
     //   {
@@ -362,7 +365,7 @@ const NAV_ITEMS = [
     // ],
   },
   {
-    label: "View By City",
+    label: "Cities",
     href: "/view-by-city",
     // children: [
     //   {
@@ -377,6 +380,11 @@ const NAV_ITEMS = [
     //   },
     // ],
   },
+  {
+    label: "Places",
+    href: "/places",
+  },
+
   {
     label: "About",
     href: "/test",

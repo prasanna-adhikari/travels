@@ -10,7 +10,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-export default function Card() {
+export default function Places() {
   return (
     <Center py={6}>
       <Box

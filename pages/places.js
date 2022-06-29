@@ -21,8 +21,9 @@ import {
 import { FaSearch } from "react-icons/fa";
 import Banner from "../components/Banner/Banner";
 import Destinations from "../components/Card/Destinations";
+import Card from "../components/Card/Card";
 
-export default function ViewByCountry() {
+export default function Places() {
   return (
     <>
       <Banner></Banner>
@@ -57,7 +58,7 @@ export default function ViewByCountry() {
               //   zIndex: -1,
               // }}
             >
-              List of Countries
+              List of Places
             </Text>
           </Heading>
           <Text color={"gray.500"} pt={6} pb={2} fontSize="lg">
@@ -66,7 +67,7 @@ export default function ViewByCountry() {
         </Flex>
         <Center>
           <InputGroup>
-            <Input type="text" placeholder="Search Country" />
+            <Input type="text" placeholder="Search Place" />
             <InputRightAddon
               children={<FaSearch />}
               style={{ cursor: "pointer" }}
@@ -82,10 +83,9 @@ export default function ViewByCountry() {
           py={10}
           pb={5}
         >
-          <Destinations />
-          {/* <Destinations />
-          <Destinations />
-          <Destinations /> */}
+          <Card />
+          <Card />
+          <Card />
         </SimpleGrid>
         {/* <Center py={6}>
           <Box

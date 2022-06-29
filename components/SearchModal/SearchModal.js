@@ -15,8 +15,6 @@ import { FaSearch } from "react-icons/fa";
 export default function SearchModal({ open, close }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [test, setTest] = useState(open);
-  console.log(onClose);
-  console.log(close);
 
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
@@ -39,7 +37,11 @@ export default function SearchModal({ open, close }) {
           <FormControl>
             {/* <FormLabel>First name</FormLabel> */}
             <InputGroup>
-              <Input type="text" placeholder="Search destination here" />
+              <Input
+                focusBorderColor="none"
+                type="text"
+                placeholder="Search destination here"
+              />
               <InputRightAddon
                 children={<FaSearch />}
                 style={{ cursor: "pointer" }}

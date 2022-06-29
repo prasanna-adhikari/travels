@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["images.unsplash.com"],
+    // "images.unsplash.com",
+    domains: ["localhost", "images.unsplash.com"],
     // loader: "imgix",
     //path: "localhost",
   },
