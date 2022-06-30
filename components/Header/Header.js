@@ -350,7 +350,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Countries",
-    href: "/view-by-country",
+    href: "/country",
     // children: [
     //   {
     //     label: "Job Board",
@@ -366,7 +366,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Cities",
-    href: "/view-by-city",
+    href: "/city",
     // children: [
     //   {
     //     label: "Job Board",
