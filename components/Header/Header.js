@@ -50,7 +50,7 @@ export default function Header() {
   } = useDisclosure();
   const initialFocusRef = React.useRef();
   // const [isOpenModal, setIsOpenModal] = useState(false);
-  useEffect(() => {}, []);
+
   return (
     <Box
       borderBottom={1}
@@ -186,6 +186,8 @@ const DesktopNav = () => {
                     textDecoration: "none",
                     color: linkHoverColor,
                   }}
+                  focusBorderColor="none"
+                  // focusBorderColor="none"
                 >
                   <Link
                     p={2}
@@ -196,6 +198,7 @@ const DesktopNav = () => {
                       textDecoration: "none",
                       color: linkHoverColor,
                     }}
+                    focusBorderColor="none"
                   >
                     {navItem.label}
                   </Link>
@@ -364,26 +367,15 @@ const NAV_ITEMS = [
     //   },
     // ],
   },
-  {
-    label: "Cities",
-    href: "/city",
-    // children: [
-    //   {
-    //     label: "Job Board",
-    //     subLabel: "Find your dream design job",
-    //     href: "#",
-    //   },
-    //   {
-    //     label: "Freelance Projects",
-    //     subLabel: "An exclusive list for contract work",
-    //     href: "#",
-    //   },
-    // ],
-  },
-  {
-    label: "Places",
-    href: "/places",
-  },
+  // {
+  //   label: "Cities",
+  //   href: "/city",
+
+  // },
+  // {
+  //   label: "Places",
+  //   href: "/places",
+  // },
 
   {
     label: "About",

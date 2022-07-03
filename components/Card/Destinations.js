@@ -24,7 +24,7 @@ export default function Destinations({ length }) {
     try {
       if (length == 6) {
         console.log(length);
-        const response = await publicFetch.get(`country?limit=2`);
+        const response = await publicFetch.get(`country?limit=6`);
 
         setCountries(response.data);
       } else {

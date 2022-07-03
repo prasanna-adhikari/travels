@@ -17,3 +17,7 @@ a {
 .contact{
   font-size: "15px" !important;
 }
+.main-container{
+  margin-top: "75px";
+  padding-top: "75px";
+}

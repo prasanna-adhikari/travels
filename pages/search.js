@@ -20,34 +20,27 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import IMAGE_URL from "../../../utils/imageUrl";
-import Banner from "../../../components/Banner/Banner";
-import Destinations from "../../../components/Card/Destinations";
-import { publicFetch } from "../../../utils/fetch";
-import CitySimmer from "../../../components/Skeleton/CitySimmer";
+import IMAGE_URL from "../utils/imageUrl";
+import { publicFetch } from "../utils/fetch";
 import { FaSearch } from "react-icons/fa";
-import PlaceSimmer from "../../../components/Skeleton/PlaceSimmer";
-import ListPlaceSimmer from "../../../components/Skeleton/ListPlaceSimmer";
-import NoResultFound from "../../../components/Error/NoResultFound";
+import PlaceSimmer from "../components/Skeleton/PlaceSimmer";
+import ListPlaceSimmer from "../components/Skeleton/ListPlaceSimmer";
+import NoResultFound from "../components/Error/NoResultFound";
 
-const placesByCities = () => {
+export default function SearchResult() {
   const [places, setPlaces] = useState();
   const router = useRouter();
-  const { slug } = router.query;
+  const { q } = router.query;
   const [cityName, setCityName] = useState();
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(q);
   const [serverError, setServerError] = useState(false);
 
   let length = 0;
   const getPlacesByCities = async () => {
     try {
-      if (slug) {
-        const response = await publicFetch.get(
-          `/place/${slug}?search=${searchTerm}`
-        );
-        console.log(response);
-        setPlaces(response.data);
-      }
+      const response = await publicFetch.get(`/place?search=${q}`);
+      console.log(response);
+      setPlaces(response.data);
     } catch (error) {
       console.log(error);
       //   const responseMessage = error.response.data.message;
@@ -55,11 +48,11 @@ const placesByCities = () => {
     }
   };
   useEffect(() => {
-    if (slug) {
+    if (q) {
       getPlacesByCities();
       // setCityName(slug.replace("-", ", "));
     }
-  }, [slug, searchTerm]);
+  }, [q]);
   return (
     <>
       <Container maxW={"7xl"} py={20}>
@@ -84,18 +77,18 @@ const placesByCities = () => {
               color={"gray.700"}
               // textTransform={"capitalize"}
             >
-              List of Places
+              Search Result
             </Text>
           </Heading>
           <Text color={"gray.500"} pt={6} pb={2} fontSize="lg">
             rich coding snippets app that lets you create your own code snippets
           </Text>
         </Flex>
-        <Center>
+        {/* <Center>
           <InputGroup>
             <Input
               type="text"
-              placeholder="Search Cities"
+              placeholder="Search Place"
               onKeyUp={(e) => setSearchTerm(e.target.value)}
             />
             <InputLeftElement
@@ -103,8 +96,7 @@ const placesByCities = () => {
               children={<FaSearch color="#a1a1a1" />}
             />
           </InputGroup>
-          {/* <Input maxW={"5xl"} placeholder="Search place by country" size="lg" /> */}
-        </Center>
+        </Center> */}
         {places?.success ? (
           <>
             {places?.result?.length > 0 ? (
@@ -196,5 +188,4 @@ const placesByCities = () => {
       </Container>
     </>
   );
-};
-export default placesByCities;
+}

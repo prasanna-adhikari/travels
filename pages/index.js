@@ -25,6 +25,7 @@ import Footer from "../components/Footer/Footer";
 import Feature from "../components/Feature/Feature";
 import Card from "../components/Card/Card";
 import Destinations from "../components/Card/Destinations";
+import Places from "../components/Card/Places";
 export default function Home() {
   return (
     // <div className={styles.container}>
@@ -241,7 +242,7 @@ export default function Home() {
               //   zIndex: -1,
               // }}
             >
-              Popular Destination
+              Popular Destinations
             </Text>
           </Heading>
           <Text color={"gray.500"} pt={6} pb={2} fontSize="lg">
@@ -255,7 +256,7 @@ export default function Home() {
           pb={5}
         >
           <Destinations length="6" />
-          <Destinations />
+          {/* <Destinations /> */}
         </SimpleGrid>
       </Container>
       <Box bg={"blue.800"}>
@@ -326,16 +327,8 @@ export default function Home() {
             rich coding snippets app that lets you create your own code snippets
           </Text>
         </Flex>
-        <SimpleGrid
-          templateColumns={{ sm: "1fr ", md: "2fr 2fr", lg: "2fr 2fr 2fr" }}
-          spacing={12}
-          py={10}
-          pb={5}
-        >
-          <Card />
-          <Card />
-          <Card />
-        </SimpleGrid>
+
+        <Places />
       </Container>
     </div>
   );

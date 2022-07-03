@@ -1,14 +1,19 @@
-import { ReactNode } from "react";
-
 import {
   Box,
+  chakra,
   Container,
   Link,
   SimpleGrid,
   Stack,
   Text,
+  VisuallyHidden,
+  Input,
+  IconButton,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { ReactNode } from "react";
+import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { BiMailSend } from "react-icons/bi";
 
 const Logo = (props) => {
   return (
@@ -38,15 +43,15 @@ const ListHeader = ({ children }) => {
   );
 };
 
-export default function Footer() {
+export default function LargeWithNewsletter() {
   return (
     <Box
-      bg={useColorModeValue("gray.700", "whitealpha.200")}
-      color={useColorModeValue("gray.50", "gray.50")}
+      bg={useColorModeValue("blue.800", "gray.900")}
+      color={useColorModeValue("white", "white.50")}
     >
-      <Container as={Stack} maxW={"7xl"} py={10}>
+      <Container as={Stack} maxW={"7xl"} py={14}>
         <SimpleGrid
-          templateColumns={{ sm: "1fr 1fr", md: "2fr 1fr 1fr 1fr 1fr" }}
+          templateColumns={{ sm: "1fr 1fr", md: "3fr 1fr  2fr" }}
           spacing={8}
         >
           <Stack spacing={6}>
@@ -54,50 +59,66 @@ export default function Footer() {
               <Logo color={useColorModeValue("gray.700", "white")} />
             </Box>
             <Text fontSize={"sm"}>
-              {/* © 2022 Chakra Templates. All rights reserved */}
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout. The
+              point of using Lorem Ipsum is that it has a more-or-less normal
+              distribution of letters, as opposed to using 'Content here,
+              content here', making it look like readable English. Many desktop
+              publishing packages and web page editors now use Lorem Ipsum as
+              their default model text, and a search for 'lorem ipsum' will
+              uncover many web sites still in their infancy. Various versions
+              have evolved over the years, sometimes by accident, sometimes on
+              purpose (injected humour and the like).
             </Text>
+            {/* <Stack direction={"row"} spacing={6}>
+              <SocialButton label={"Twitter"} href={"#"}>
+                <FaTwitter />
+              </SocialButton>
+              <SocialButton label={"YouTube"} href={"#"}>
+                <FaYoutube />
+              </SocialButton>
+              <SocialButton label={"Instagram"} href={"#"}>
+                <FaInstagram />
+              </SocialButton>
+            </Stack> */}
           </Stack>
           <Stack align={"flex-start"}>
-            <ListHeader>Product</ListHeader>
-            <Link href={"#"}>Overview</Link>
-            <Link href={"#"}>Features</Link>
-            <Link href={"#"}>Tutorials</Link>
-            <Link href={"#"}>Pricing</Link>
-            <Link href={"#"}>Releases</Link>
+            <ListHeader>Quick Link</ListHeader>
+            <Link href={"/"}>Home us</Link>
+            <Link href={"/country"}>Countries</Link>
+            <Link href={"/about"}>About us</Link>
+            <Link href={"/contact"}>Contact</Link>
           </Stack>
-          <Stack align={"flex-start"}>
-            <ListHeader>Company</ListHeader>
-            <Link href={"#"}>About</Link>
-            <Link href={"#"}>Press</Link>
-            <Link href={"#"}>Careers</Link>
-            <Link href={"#"}>Contact</Link>
-            <Link href={"#"}>Partners</Link>
-          </Stack>
-          <Stack align={"flex-start"}>
+          {/* <Stack align={"flex-start"}>
             <ListHeader>Support</ListHeader>
             <Link href={"#"}>Help Center</Link>
             <Link href={"#"}>Terms of Service</Link>
             <Link href={"#"}>Legal</Link>
             <Link href={"#"}>Privacy Policy</Link>
-            <Link href={"#"}>Status</Link>
-          </Stack>
+            <Link href={"#"}>Satus</Link>
+          </Stack> */}
           <Stack align={"flex-start"}>
-            <ListHeader>Follow Us</ListHeader>
-            <Link href={"#"}>Facebook</Link>
-            <Link href={"#"}>Twitter</Link>
-            <Link href={"#"}>Dribbble</Link>
-            <Link href={"#"}>Instagram</Link>
-            <Link href={"#"}>LinkedIn</Link>
+            <ListHeader>Subscribe to our NewsLetter</ListHeader>
+            <Stack direction={"row"}>
+              <Input
+                placeholder={"Your email address"}
+                bg={useColorModeValue("white.100", "whiteAlpha.100")}
+                color={useColorModeValue("gray.700", "gray.800")}
+                border={0}
+                _focus={{
+                  bg: "white.100",
+                }}
+              />
+              <IconButton
+                bg={useColorModeValue("pink.400", "pink.800")}
+                color={useColorModeValue("white", "gray.800")}
+                _hover={{
+                  bg: "pink.600",
+                }}
+                aria-label="Subscribe"
+                icon={<BiMailSend />}
+              />
+            </Stack>
           </Stack>
         </SimpleGrid>
       </Container>
