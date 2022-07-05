@@ -26,6 +26,7 @@ import Feature from "../components/Feature/Feature";
 import Card from "../components/Card/Card";
 import Destinations from "../components/Card/Destinations";
 import Places from "../components/Card/Places";
+import NewsLetter from "../components/NewsLetter/NewsLetter";
 export default function Home() {
   return (
     // <div className={styles.container}>
@@ -259,37 +260,7 @@ export default function Home() {
           {/* <Destinations /> */}
         </SimpleGrid>
       </Container>
-      <Box bg={"blue.800"}>
-        <Container maxW={"7xl"} py={28}>
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-            <Stack spacing={4}>
-              <Heading color={"white"}>Subscribe to Our NewsLetter</Heading>
-              <Text color={"white"} fontSize={"lg"}>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore
-              </Text>
-            </Stack>
-            <Flex
-              flex={1}
-              justify={"center"}
-              align={"center"}
-              position={"relative"}
-              w={"full"}
-            >
-              <SimpleGrid
-                templateColumns={{
-                  sm: "1fr ",
-                  md: "3fr 1fr",
-                }}
-                spacing={5}
-              >
-                <Input placeholder="Enter your email" />
-                <Button colorScheme="pink">Subscribe</Button>
-              </SimpleGrid>
-            </Flex>
-          </SimpleGrid>
-        </Container>
-      </Box>
+      <NewsLetter />
       <Container maxW={"7xl"} py={20}>
         <Flex
           flex={1}

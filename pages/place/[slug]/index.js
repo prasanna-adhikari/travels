@@ -33,7 +33,9 @@ export default function PlaceDetail() {
   const getPlaceDetail = async () => {
     try {
       if (slug) {
-        const response = await publicFetch.get(`/place?slug=${slug}`);
+        const response = await publicFetch.get(
+          `/place?slug=${slug}&sortby=a-z`
+        );
         console.log(response.data.result);
         setPlaceDesc(response.data.result[0]);
         setPlaceStatus(response.data);

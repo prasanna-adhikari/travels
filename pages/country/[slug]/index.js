@@ -39,7 +39,7 @@ const cityByCountry = () => {
     try {
       if (slug) {
         const response = await publicFetch.get(
-          `/city/${slug}?search=${searchTerm}`
+          `/city/${slug}?search=${searchTerm}&sortby=a-z`
         );
         console.log(response);
         setCities(response.data);

@@ -10,10 +10,12 @@ import {
   Input,
   IconButton,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { BiMailSend } from "react-icons/bi";
+import { useState } from "react";
 
 const Logo = (props) => {
   return (
@@ -44,6 +46,64 @@ const ListHeader = ({ children }) => {
 };
 
 export default function LargeWithNewsletter() {
+  const [email, setEmail] = useState("");
+  const toast = useToast();
+  const addNewsletter = async () => {
+    try {
+      if (validate()) {
+        const response = await publicFetch.post(`add/newsletter`, {
+          email: email,
+        });
+        console.log(response.data.message);
+        toast({
+          title: `${response.data.message}`,
+          status: "success",
+          isClosable: true,
+          duration: 3000,
+        });
+      }
+    } catch (error) {
+      console.log(error.response.data.message);
+      toast({
+        description: `${error.response.data.message}`,
+        duration: 3000,
+        isClosable: true,
+        status: "error",
+      });
+    }
+  };
+  const validate = () => {
+    const com = email.substring(email.length - 4);
+    console.log(com);
+    if (email == "") {
+      toast({
+        description: "Email is required",
+        duration: 3000,
+        isClosable: true,
+        status: "error",
+      });
+      return false;
+    }
+    if (!email.includes("@")) {
+      toast({
+        description: "Email is not valid.",
+        duration: 3000,
+        isClosable: true,
+        status: "error",
+      });
+      return false;
+    }
+    if (!email.includes(com)) {
+      toast({
+        description: "Email is not valid.",
+        duration: 3000,
+        isClosable: true,
+        status: "error",
+      });
+      return false;
+    }
+    return true;
+  };
   return (
     <Box
       bg={useColorModeValue("blue.800", "gray.900")}
@@ -104,6 +164,9 @@ export default function LargeWithNewsletter() {
                 placeholder={"Your email address"}
                 bg={useColorModeValue("white.100", "whiteAlpha.100")}
                 color={useColorModeValue("gray.700", "gray.800")}
+                id="email"
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
                 border={0}
                 _focus={{
                   bg: "white.100",
@@ -112,6 +175,7 @@ export default function LargeWithNewsletter() {
               <IconButton
                 bg={useColorModeValue("pink.400", "pink.800")}
                 color={useColorModeValue("white", "gray.800")}
+                onClick={() => addNewsletter()}
                 _hover={{
                   bg: "pink.600",
                 }}

@@ -39,7 +39,7 @@ export default function ViewByCountry() {
   const getCountry = async () => {
     try {
       if (searchTerm == "") {
-        const response = await publicFetch.get(`country`);
+        const response = await publicFetch.get(`country?sortby=a-z`);
 
         setCountries(response.data);
         setServerError(false);
