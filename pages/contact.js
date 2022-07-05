@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Container,
   Stack,
@@ -23,6 +24,7 @@ import {
   InputLeftElement,
   Input,
   Textarea,
+  useToast,
 } from "@chakra-ui/react";
 import {
   MdPhone,
@@ -32,9 +34,99 @@ import {
   MdOutlineEmail,
 } from "react-icons/md";
 import { BsGithub, BsDiscord, BsPerson } from "react-icons/bs";
+import { publicFetch } from "../utils/fetch";
+
 export default function contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const toast = useToast();
+  const sendMessage = async () => {
+    try {
+      if (validate()) {
+        const response = await publicFetch.post(`add/contact`, {
+          email: email,
+          name: name,
+          message: message,
+        });
+        console.log(response.data.message);
+        toast({
+          title: `${response.data.message}`,
+          status: "success",
+          isClosable: true,
+          duration: 3000,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      console.log(error.response);
+      // toast({
+      //   description: `${error.response.data.message}`,
+      //   duration: 3000,
+      //   isClosable: true,
+      //   status: "error",
+      // });
+    }
+  };
+  const validate = () => {
+    // let com;
+
+    console.log(name);
+    if (name == "") {
+      toast({
+        description: "Enter your name.",
+        duration: 3000,
+        isClosable: true,
+        status: "error",
+      });
+      return false;
+    }
+
+    if (email == "") {
+      toast({
+        description: "Email is required",
+        duration: 3000,
+        isClosable: true,
+        status: "error",
+      });
+      return false;
+    }
+
+    if (!email.includes("@")) {
+      toast({
+        description: "Email is not valid.",
+        duration: 3000,
+        isClosable: true,
+        status: "error",
+      });
+      return false;
+    }
+    if (email !== "") {
+      const com = email.substring(email.length - 4);
+
+      if (!email.includes(com)) {
+        toast({
+          description: "Email is not valid.",
+          duration: 3000,
+          isClosable: true,
+          status: "error",
+        });
+        return false;
+      }
+    }
+    if (message == "") {
+      toast({
+        description: "Enter your message",
+        duration: 3000,
+        isClosable: true,
+        status: "error",
+      });
+      return false;
+    }
+    return true;
+  };
   return (
-    <Container maxW={"7xl"} py={5}>
+    <Container maxW={"7xl"} py={4}>
       <Stack
         align={"center"}
         spacing={{ base: 8, md: 10 }}
@@ -57,7 +149,11 @@ export default function contact() {
                     pointerEvents="none"
                     children={<BsPerson color="gray.800" />}
                   />
-                  <Input type="text" size="md" />
+                  <Input
+                    type="text"
+                    size="md"
+                    onChange={(e) => setName(e.target.value)}
+                  />
                 </InputGroup>{" "}
               </FormControl>
               <FormControl id="name">
@@ -68,21 +164,32 @@ export default function contact() {
                     pointerEvents="none"
                     children={<MdOutlineEmail color="gray.800" />}
                   />
-                  <Input type="text" size="md" />
+                  <Input
+                    type="email"
+                    size="md"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </InputGroup>
               </FormControl>
               <FormControl id="name">
-                <FormLabel>Place Description</FormLabel>
+                <FormLabel>Message</FormLabel>
                 <Textarea
                   borderColor="gray.300"
                   _hover={{
                     borderRadius: "gray.300",
                   }}
-                  placeholder="message"
+                  onChange={(e) => setMessage(e.target.value)}
+                  // placeholder="message"
                 />
               </FormControl>
               <FormControl id="name" float="right">
-                <Button variant="solid" bg="#0D74FF" color="white" _hover={{}}>
+                <Button
+                  variant="solid"
+                  bg="#0D74FF"
+                  color="white"
+                  _hover={{}}
+                  onClick={sendMessage}
+                >
                   Send
                 </Button>
               </FormControl>
